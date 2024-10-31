@@ -1,0 +1,27 @@
+# dependencies
+node_modules
+
+# testing
+coverage
+test-results
+playwright-report
+blob-report
+
+# build
+dist
+
+# misc
+.DS_Store
+*.pem
+.idea
+data
+
+# debug
+pnpm-debug.log*
+
+# turbo
+.turbo
+
+# env 
+.env
+.env.local
