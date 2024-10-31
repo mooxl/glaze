@@ -5,8 +5,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "turbo run dev",
-    "format": "biome format .",
-    "format:fix": "biome format --write ."
+    "format": "pnpm biome format .",
+    "format:fix": "pnpm biome format --write .",
+    "lint": "pnpm biome lint .",
+    "lint:fix": "pnpm biome lint --write --unsafe .",
+    "check": "pnpm biome check .",
+    "check:fix": "pnpm biome check --write --unsafe ."
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
