@@ -13,6 +13,8 @@ app.get("/", (c) => {
 
 app.use(logger());
 
+console.log(process.env);
+
 app.use(
 	"/trpc/*",
 	cors({

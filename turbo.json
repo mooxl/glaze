@@ -1,5 +1,7 @@
 {
 	"$schema": "https://turbo.build/schema.json",
+	"globalDependencies": [".env"],
+	"globalEnv": ["CLIENT_*", "SERVER_*"],
 	"tasks": {
 		"dev": {
 			"cache": false,
