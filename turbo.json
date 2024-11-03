@@ -4,6 +4,15 @@
 		"dev": {
 			"cache": false,
 			"persistent": true
+		},
+		"drizzle:generate": {
+			"cache": false
+		},
+		"drizzle:migrate": {
+			"cache": false
+		},
+		"drizzle:studio": {
+			"cache": false
 		}
 	}
 }

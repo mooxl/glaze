@@ -1,5 +1,7 @@
 {
-	"name": "server",
+	"name": "@glaze/server",
+	"version": "0.0.1",
+	"private": true,
 	"type": "module",
 	"scripts": {
 		"dev": "tsx watch src/index.ts "
@@ -11,7 +13,7 @@
 		"hono": "^4.6.8"
 	},
 	"devDependencies": {
-		"@types/node": "^20.11.17",
-		"tsx": "^4.7.1"
+		"@types/node": "^22.8.7",
+		"tsx": "^4.19.2"
 	}
 }

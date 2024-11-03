@@ -10,7 +10,9 @@
 		"lint": "pnpm biome lint .",
 		"lint:fix": "pnpm biome lint --write --unsafe .",
 		"check": "pnpm biome check .",
-		"check:fix": "pnpm biome check --write --unsafe ."
+		"check:fix": "pnpm biome check --write --unsafe .",
+		"drizzle:generate": "turbo run drizzle:generate --filter=@glaze/database",
+		"drizzle:migrate": "turbo run drizzle:migrate --filter=@glaze/database"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
