@@ -13,11 +13,10 @@ import {
 import { StrictMode } from "react";
 
 export const trpc = createTRPCReact<AppRouter>({});
-
 export const trpcClient = trpc.createClient({
 	links: [
 		httpBatchLink({
-			url: "http://localhost:8000/trpc",
+			url: `${import.meta.env.CLIENT_SERVER_URL}/trpc`,
 			fetch(url, options) {
 				return fetch(url, {
 					...options,

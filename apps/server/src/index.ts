@@ -13,12 +13,10 @@ app.get("/", (c) => {
 
 app.use(logger());
 
-console.log(process.env);
-
 app.use(
 	"/trpc/*",
 	cors({
-		origin: "http://localhost:3000",
+		origin: process.env.SERVER_CLIENT_URL!,
 		credentials: true,
 	}),
 );
@@ -30,10 +28,11 @@ app.use(
 	}),
 );
 
-const port = 8000;
+const port = process.env.CLIENT_SERVER_URL?.split(":").at(-1);
+if (!port) throw new Error("Port not defined");
 console.log(`Server is running on http://localhost:${port}`);
 
 serve({
 	fetch: app.fetch,
-	port,
+	port: Number.parseInt(port),
 });
