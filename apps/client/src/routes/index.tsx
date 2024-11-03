@@ -1,13 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { trpc } from "@/main";
+import { createFileRoute, useLoaderData } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
-	component: HomeComponent,
+	loader: async ({ context: { cache } }) => {
+		await cache.hello.ensureData();
+	},
+	component: () => {
+		const { data: hello } = trpc.hello.useQuery();
+		return (
+			<div className="p-2">
+				<h3>{hello}</h3>
+			</div>
+		);
+	},
 });
-
-function HomeComponent() {
-	return (
-		<div className="p-2">
-			<h3>Welcome Home!</h3>
-		</div>
-	);
-}
