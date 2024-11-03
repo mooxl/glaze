@@ -15,6 +15,7 @@ dist
 *.pem
 .idea
 data
+drizzle
 
 # debug
 pnpm-debug.log*
