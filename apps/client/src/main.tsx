@@ -2,43 +2,10 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import ReactDOM from "react-dom/client";
 import { routeTree } from "./routeTree.gen";
 import "./index.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import type { AppRouter } from "@trpc-router";
-import {
-	createTRPCQueryUtils,
-	createTRPCReact,
-	httpBatchLink,
-} from "@trpc/react-query";
 import { StrictMode } from "react";
-
-export const trpc = createTRPCReact<AppRouter>({});
-export const trpcClient = trpc.createClient({
-	links: [
-		httpBatchLink({
-			url: `${import.meta.env.CLIENT_SERVER_URL}/trpc`,
-			fetch(url, options) {
-				return fetch(url, {
-					...options,
-					credentials: "include",
-				});
-			},
-		}),
-	],
-});
-
-export const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			retry: false,
-		},
-	},
-});
-
-export const cache = createTRPCQueryUtils({
-	queryClient,
-	client: trpcClient,
-});
+import { cache, queryClient, trpc, trpcClient } from "./lib/trpc";
 
 export const router = createRouter({
 	routeTree,
@@ -57,7 +24,9 @@ root.render(
 	<trpc.Provider client={trpcClient} queryClient={queryClient}>
 		<QueryClientProvider client={queryClient}>
 			<ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
-			<RouterProvider router={router} />
+			<StrictMode>
+				<RouterProvider router={router} />
+			</StrictMode>
 		</QueryClientProvider>
 	</trpc.Provider>,
 );
